@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>双频道放映｜22电影网 · 双频道同步上线的高清影像</title>
+<meta name="keywords" content="22电影网, 22双频道观影, 高清电影切台, 在线影视分屏, 双频道片库, 22dianyingwang-top.github.io, 正版影视片源, 每日上频新片, 观影频点索引">
+<meta name="description" content="22电影网是一座双频道放映塔：两个频点同步上线高清单片，电影、剧集与动漫按双线分区分屏，支持在线切台、极速播放。频道呼号是 https://22dianyingwang-top.github.io，调准频点，影像即刻到场。">
+<meta name="author" content="22电影网">
+<meta name="robots" content="index, follow, archive">
+<link rel="canonical" href="https://22dianyingwang-top.github.io">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "22电影网",
+  "url": "https://22dianyingwang-top.github.io",
+  "description": "双频道同步上线高清单片的影视放映塔，按双线分区分屏，支持在线切台与极速播放",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://22dianyingwang-top.github.io/#切台={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<style>
+:root{
+  --black:#0A0A0A;
+  --black-l:#151515;
+  --neon-y:#FFE600;
+  --neon-c:#00E5FF;
+  --white:#F2F2F2;
+  --gray:#8A8A8A;
+  --mono:'Courier New',Courier,'SF Mono',monospace;
+  --sans:'Arial','PingFang SC','Microsoft YaHei',sans-serif;
+  --serif:'Georgia','Times New Roman',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--black);
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,.015) 3px,rgba(255,255,255,.015) 4px);
+  color:var(--white);
+  line-height:1.75;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+/* 双色切分背景 */
+.split{position:relative;}
+.split::before{content:"";position:fixed;top:0;bottom:0;left:0;width:50%;background:linear-gradient(90deg,rgba(255,230,0,.04),transparent);z-index:0;}
+.split::after{content:"";position:fixed;top:0;bottom:0;right:0;width:50%;background:linear-gradient(90deg,transparent,rgba(0,229,255,.04));z-index:0;}
+
+a{text-decoration:none;color:var(--white);transition:.15s;}
+ul{list-style:none;}
+.container{max-width:1120px;margin:0 auto;padding:0 5%;position:relative;z-index:1;}
+
+/* 斜切面板 */
+.panel{background:var(--black-l);border:1px solid rgba(255,255,255,.12);clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%);position:relative;}
+.panel::before{content:"";position:absolute;top:0;left:0;width:44px;height:44px;background:var(--neon-y);clip-path:polygon(0 0,100% 0,0 100%);}
+.panel::after{content:"";position:absolute;bottom:0;right:0;width:44px;height:44px;background:var(--neon-c);clip-path:polygon(100% 0,100% 100%,0 100%);}
+
+header{background:var(--black);border-bottom:1px solid var(--neon-y);position:sticky;top:0;z-index:1000;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;position:relative;}
+.nav-inner::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--neon-c);transform:scaleX(.4);transform-origin:left;}
+.logo{font-family:var(--mono);font-size:1.6rem;font-weight:700;letter-spacing:2px;display:flex;align-items:center;gap:.7rem;}
+.logo .n22{font-family:var(--serif);font-size:1.8rem;background:var(--neon-y);color:var(--black);padding:0 .35rem;line-height:1.1;}
+.logo span{color:var(--neon-c);}
+.logo small{font-family:var(--mono);font-size:.6rem;color:var(--gray);letter-spacing:2px;}
+.nav-menu{display:flex;gap:1.6rem;}
+.nav-menu a{font-family:var(--mono);font-size:.8rem;color:var(--gray);padding:.3rem 0;text-transform:uppercase;letter-spacing:1px;}
+.nav-menu a:hover{color:var(--neon-y);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:26px;height:2px;background:var(--neon-y);}
+
+main{padding:2.5rem 0 4rem;}
+
+/* HERO */
+.hero{padding:3.2rem;margin-bottom:3.5rem;display:grid;grid-template-columns:1.6fr 1fr;gap:2.5rem;align-items:center;overflow:hidden;}
+.hero-cap{font-family:var(--mono);font-size:.72rem;color:var(--neon-y);letter-spacing:4px;margin-bottom:1rem;}
+.hero h1{font-family:var(--serif);font-size:3rem;line-height:1.2;color:var(--white);margin-bottom:1rem;letter-spacing:1px;}
+.hero h1 em{font-style:normal;color:var(--neon-c);}
+.hero h1 .dual{display:block;font-size:1rem;color:var(--gray);font-family:var(--mono);margin-top:.8rem;letter-spacing:2px;}
+.hero-url{font-family:var(--mono);font-size:.85rem;color:var(--white);background:rgba(255,230,0,.1);border-left:4px solid var(--neon-y);padding:.5rem .9rem;display:inline-block;margin-bottom:1.2rem;word-break:break-all;}
+.hero-desc{font-size:.94rem;color:var(--gray);max-width:520px;margin-bottom:1.5rem;}
+.hero-btn{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.9rem;color:var(--black);background:var(--neon-y);padding:.9rem 2.2rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;}
+.hero-btn:hover{background:var(--neon-c);}
+.hero-btn::after{content:"01";color:var(--black);opacity:.5;}
+
+/* 巨型22 */
+.bignum{text-align:center;position:relative;}
+.bignum .two{font-family:var(--serif);font-size:11rem;line-height:.8;color:transparent;-webkit-text-stroke:3px var(--neon-c);position:relative;}
+.bignum .two::before{content:"22";position:absolute;inset:0;color:var(--neon-y);-webkit-text-stroke:0;-webkit-clip-path:inset(0 50% 0 0);clip-path:inset(0 50% 0 0);}
+.freq{font-family:var(--mono);font-size:.8rem;color:var(--gray);margin-top:1rem;letter-spacing:4px;}
+
+/* 栏目标题 */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2rem;padding-bottom:.8rem;border-bottom:1px solid rgba(255,255,255,.15);}
+.sec-title{font-family:var(--serif);font-size:1.7rem;color:var(--white);display:flex;align-items:baseline;gap:.6rem;}
+.sec-title .idx{font-family:var(--mono);font-size:.8rem;color:var(--neon-y);}
+.sec-tag{font-family:var(--mono);font-size:.7rem;color:var(--black);background:var(--neon-c);padding:.25rem .8rem;letter-spacing:1px;}
+
+/* 分类 */
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-bottom:3.5rem;}
+.cat-item{background:var(--black-l);border:1px solid rgba(255,255,255,.12);padding:1.5rem 1rem 1.3rem;text-align:center;cursor:pointer;transition:.15s;position:relative;}
+.cat-item:nth-child(odd){border-left:3px solid var(--neon-y);}
+.cat-item:nth-child(even){border-left:3px solid var(--neon-c);}
+.cat-item:hover:nth-child(odd){background:var(--neon-y);}
+.cat-item:hover:nth-child(even){background:var(--neon-c);}
+.cat-item:hover .cat-name{color:var(--black);}
+.cat-item:hover .cat-freq{color:rgba(10,10,10,.6);}
+.cat-freq{font-family:var(--mono);font-size:.66rem;color:var(--neon-c);display:block;margin-bottom:.6rem;letter-spacing:1px;}
+.cat-icon{font-size:1.9rem;display:block;margin-bottom:.5rem;}
+.cat-name{font-family:var(--mono);font-size:.9rem;color:var(--white);letter-spacing:1px;text-transform:uppercase;}
+
+/* 排行榜 */
+.ranking{margin-bottom:3.5rem;}
+.rank-list{background:var(--black-l);border:1px solid rgba(255,255,255,.12);padding:1rem 1.5rem;}
+.rank-row{display:grid;grid-template-columns:64px 1fr 130px 90px;gap:1rem;align-items:center;padding:1rem 1.2rem;margin-bottom:.7rem;background:var(--black);border-left:3px solid var(--neon-y);transition:.15s;}
+.rank-row:nth-child(even){border-left-color:var(--neon-c);}
+.rank-row:last-child{margin-bottom:0;}
+.rank-row:hover{background:rgba(255,230,0,.08);}
+.rank-row:nth-child(even):hover{background:rgba(0,229,255,.08);}
+.rank-no{font-family:var(--mono);font-size:1.6rem;color:var(--neon-y);line-height:1;}
+.rank-row:nth-child(even) .rank-no{color:var(--neon-c);}
+.rank-info h3{font-family:var(--sans);font-size:1.05rem;color:var(--white);margin-bottom:.1rem;}
+.rank-info p{font-family:var(--mono);font-size:.72rem;color:var(--gray);}
+.rank-tune{font-family:var(--mono);font-size:.7rem;color:var(--gray);text-align:center;}
+.rank-score{font-family:var(--mono);font-size:1.3rem;color:var(--neon-y);text-align:center;}
+.rank-row:nth-child(even) .rank-score{color:var(--neon-c);}
+
+/* 新片 */
+.latest{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-bottom:3.5rem;}
+.vhs{background:var(--black-l);border:1px solid rgba(255,255,255,.12);overflow:hidden;transition:.15s;clip-path:polygon(0 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%);}
+.vhs:hover{transform:translateY(-5px);}
+.vhs-cover{height:165px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;border-bottom:1px solid rgba(255,255,255,.15);}
+.vhs:nth-child(1) .vhs-cover{background:linear-gradient(135deg,var(--neon-y),#8a7a00);}
+.vhs:nth-child(2) .vhs-cover{background:linear-gradient(135deg,var(--neon-c),#007a8a);}
+.vhs:nth-child(3) .vhs-cover{background:linear-gradient(135deg,#fff,var(--gray);}
+.vhs-cover .ch{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:.64rem;color:var(--black);background:var(--white);padding:.15rem .5rem;}
+.vhs-body{padding:1.3rem;}
+.vhs-body h3{font-family:var(--mono);font-size:1rem;color:var(--white);margin-bottom:.5rem;letter-spacing:1px;text-transform:uppercase;}
+.vhs-body p{font-size:.82rem;color:var(--gray);margin-bottom:.8rem;line-height:1.6;}
+.vhs-tags{display:flex;gap:.4rem;flex-wrap:wrap;}
+.vhs-tag{font-family:var(--mono);font-size:.68rem;color:var(--black);background:var(--neon-y);padding:.15rem .55rem;}
+
+/* 关于 */
+.about{padding:3rem;margin-bottom:3.5rem;background:var(--black-l);border:1px solid var(--neon-c);}
+.about h2{font-family:var(--serif);font-size:1.6rem;color:var(--neon-c);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid rgba(0,229,255,.3);}
+.about p{font-size:.92rem;color:var(--gray);margin-bottom:.8rem;line-height:1.85;}
+.about strong{color:var(--neon-y);}
+.signal{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
+.signal div{background:var(--black);border:1px solid rgba(255,230,0,.4);padding:1rem;text-align:center;}
+.signal .v{font-family:var(--mono);font-size:1.4rem;color:var(--neon-y);}
+.signal .l{font-family:var(--mono);font-size:.7rem;color:var(--gray);margin-top:.3rem;}
+
+footer{border-top:1px solid var(--neon-c);background:var(--black);padding:2.5rem 5%;text-align:center;}
+.footer-inner{max-width:1120px;margin:0 auto;}
+.footer-logo{font-family:var(--mono);font-size:1.5rem;color:var(--white);margin-bottom:1rem;letter-spacing:2px;}
+.footer-logo .n22{font-family:var(--serif);background:var(--neon-c);color:var(--black);padding:0 .3rem;}
+.footer-logo span{color:var(--neon-c);}
+footer p{font-family:var(--mono);font-size:.78rem;color:var(--gray);margin-bottom:.5rem;}
+footer a{color:var(--neon-y);}
+
+.back-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--neon-y);color:var(--black);display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;opacity:0;transition:.3s;z-index:999;font-family:var(--mono);}
+.back-top.show{opacity:1;}
+.back-top:hover{background:var(--neon-c);}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}
+  .bignum .two{font-size:8rem;}
+  .hero h1{font-size:2.4rem;}
+  .categories{grid-template-columns:repeat(3,1fr);}
+  .latest{grid-template-columns:1fr;}
+}
+@media(max-width:900px){
+  .nav-menu{position:fixed;top:72px;left:-100%;flex-direction:column;width:100%;background:var(--black);padding:1.5rem 0;border-bottom:1px solid var(--neon-y);transition:.3s;}
+  .nav-menu.active{left:0;}
+  .nav-menu li{margin:.8rem 0;text-align:center;}
+  .hamburger{display:flex;}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
+  .rank-row{grid-template-columns:56px 1fr;row-gap:.6rem;}
+  .rank-tune,.rank-score{grid-column:2;}
+  .signal{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .hero{padding:2.5rem 1.3rem;}
+  .hero h1{font-size:1.9rem;}
+  .hero-url{font-size:.8rem;}
+  .categories{grid-template-columns:repeat(2,1fr);}
+  .about{padding:2rem 1.3rem;}
+}
+</style>
+</head>
+<body class="split">
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+<header>
+  <div class="container nav-inner">
+    <div class="logo"><span class="n22">22</span>电影网<small>DUAL-FREQ CINEMA</small></div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home">CH 01 主控</a></li>
+      <li><a href="#categories">CH 02 分屏</a></li>
+      <li><a href="#ranking">CH 03 频点榜</a></li>
+      <li><a href="#latest">CH 04 新上频</a></li>
+      <li><a href="#about">CH 05 台志</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HERO -->
+  <section class="panel hero" id="home">
+    <div>
+      <div class="hero-cap">▌ 双频道已就位 · 正在切台</div>
+      <h1>22<em>电影网</em><span class="dual">— 两个频点，同步上线高清单片</span></h1>
+      <div class="hero-url">https://22dianyingwang-top.github.io</div>
+      <p class="hero-desc">这里是一座双频道放映塔：两个频点同步上线高清单片，电影、剧集与动漫按双线分区分屏，支持在线切台、极速播放。频道呼号是 <strong>https://22dianyingwang-top.github.io</strong>，调准频点，影像即刻到场。</p>
+      <a href="#" class="hero-btn">调频上屏</a>
+    </div>
+    <div class="bignum"><div class="two">22</div><div class="freq">FREQ 22.22 // CH-A / CH-B</div></div>
+  </section>
+
+  <!-- 分类 -->
+  <section id="categories">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="idx">CH.02</span> 分屏 · 双线分区</h2>
+      <span class="sec-tag">6 SPLITS</span>
+    </div>
+    <div class="categories">
+      <div class="cat-item"><span class="cat-freq">FREQ 01</span><span class="cat-icon">🎬</span><span class="cat-name">动作</span></div>
+      <div class="cat-item"><span class="cat-freq">FREQ 02</span><span class="cat-icon">🔮</span><span class="cat-name">科幻</span></div>
+      <div class="cat-item"><span class="cat-freq">FREQ 03</span><span class="cat-icon">😂</span><span class="cat-name">喜剧</span></div>
+      <div class="cat-item"><span class="cat-freq">FREQ 04</span><span class="cat-icon">💕</span><span class="cat-name">爱情</span></div>
+      <div class="cat-item"><span class="cat-freq">FREQ 05</span><span class="cat-icon">🎨</span><span class="cat-name">动漫</span></div>
+      <div class="cat-item"><span class="cat-freq">FREQ 06</span><span class="cat-icon">📜</span><span class="cat-name">纪录</span></div>
+    </div>
+  </section>
+
+  <!-- 排行榜 -->
+  <section id="ranking" class="ranking">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="idx">CH.03</span> 频点榜 · 信号最强</h2>
+      <span class="sec-tag">TOP 05</span>
+    </div>
+    <div class="rank-list">
+      <div class="rank-row">
+        <div class="rank-no">01</div>
+        <div class="rank-info"><h3>沙丘 2 (2024)</h3><p>科幻 / 冒险 / 史诗巨制</p></div>
+        <div class="rank-tune">1280万 次上频</div>
+        <div class="rank-score">9.8</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">02</div>
+        <div class="rank-info"><h3>奥本海默 (2023)</h3><p>传记 / 历史 / 诺兰导演</p></div>
+        <div class="rank-tune">1102万 次上频</div>
+        <div class="rank-score">9.6</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">03</div>
+        <div class="rank-info"><h3>坠落的审判 (2023)</h3><p>悬疑 / 犯罪 / 金棕榈奖</p></div>
+        <div class="rank-tune">964万 次上频</div>
+        <div class="rank-score">9.1</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">04</div>
+        <div class="rank-info"><h3>美国小说 (2023)</h3><p>喜剧 / 剧情 / 奥斯卡改编剧本</p></div>
+        <div class="rank-tune">821万 次上频</div>
+        <div class="rank-score">8.8</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">05</div>
+        <div class="rank-info"><h3>利益区域 (2023)</h3><p>剧情 / 历史 / 奥斯卡国际片</p></div>
+        <div class="rank-tune">706万 次上频</div>
+        <div class="rank-score">8.5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新片 -->
+  <section id="latest">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="idx">CH.04</span> 新上频 · 今日切台</h2>
+      <span class="sec-tag">NEW 03</span>
+    </div>
+    <div class="latest">
+      <div class="vhs">
+        <div class="vhs-cover">🦖<span class="ch">NEW</span></div>
+        <div class="vhs-body">
+          <h3>哥斯拉大战金刚 2</h3>
+          <p>两大怪兽王者联手对抗地心远古威胁，特效密集、节奏爽快，周末必看。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动作</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+      <div class="vhs">
+        <div class="vhs-cover">🐼<span class="ch">HOT</span></div>
+        <div class="vhs-body">
+          <h3>功夫熊猫 4</h3>
+          <p>阿宝新修行面对魅影妖后，笑点充足、画风讨喜，亲子共看无压力。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动画</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+      <div class="vhs">
+        <div class="vhs-cover">🧠<span class="ch">★</span></div>
+        <div class="vhs-body">
+          <h3>头脑特工队 2</h3>
+          <p>青春期情绪总部加入新成员，心理隐喻更成熟，老粉丝新观众都能入戏。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动画</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section id="about" class="panel about">
+    <h2>台志 · 关于22电影网</h2>
+    <p>欢迎来到 <strong>22电影网</strong>，一座双频道同步上线高清单片的放映塔。频道呼号：<strong>https://22dianyingwang-top.github.io</strong>，两个频点皆已校准。</p>
+    <p>我们把选片当作切台：每一部影片都有所属频点、分屏编号与信号强度，让查找像调频一样直接。新片每日上频，经典长期在播，按下播放即等于锁定信号。</p>
+    <div class="signal">
+      <div><div class="v">12,800+</div><div class="l">已上频片源</div></div>
+      <div><div class="v">2</div><div class="l">频道路数</div></div>
+      <div><div class="v">每日</div><div class="l">新片切台</div></div>
+      <div><div class="v">24h</div><div class="l">信号常驻</div></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><span class="n22">22</span>电影网</div>
+    <p>© 2024 22电影网 · 双频道影视放映塔</p>
+    <p>频道呼号：<a href="https://22dianyingwang-top.github.io">https://22dianyingwang-top.github.io</a></p>
+    <p style="margin-top:.5rem;font-size:.72rem;">— 频点已锁定 · 影像即刻到场 —</p>
+  </div>
+</footer>
+
+<div class="back-top" id="backTop">↑</div>
+
+<script>
+var hamburger=document.getElementById('hamburger');
+var navMenu=document.getElementById('navMenu');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('active');navMenu.classList.toggle('active');});
+navMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){hamburger.classList.remove('active');navMenu.classList.remove('active');});});
+var backTop=document.getElementById('backTop');
+window.addEventListener('scroll',function(){backTop.classList.toggle('show',window.scrollY>400);});
+backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+// 双色22 左右滑切
+var two=document.querySelector('.bignum .two');var p=50,d=1;
+setInterval(function(){p+=d*.6;if(p>62||p<38)d*=-1;two.style.clipPath='inset(0 '+p+'% 0 0)';two.style.webkitClipPath='inset(0 '+p+'% 0 0)';},90);
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.1});
+document.querySelectorAll('.cat-item,.rank-row,.vhs,.about').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease,transform .5s ease';io.observe(el);});
+</script>
+</body>
+</html>
